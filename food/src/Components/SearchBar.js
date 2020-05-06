@@ -22,25 +22,26 @@ const SearchScreen = ({term, onTermChange, onTermSubmit}) => {
 
 const styles = StyleSheet.create({
     backgroundStyle: {
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
         height: 50,
         borderRadius: 5,
         marginHorizontal: 15,
         flexDirection: 'row',
-        marginTop: 15
+        marginTop: 15,
+        marginBottom: 10
     },
     inputStyle: {
         // borderColor: 'black',
         // borderWidth: 1,
         flex: 1,
         fontSize: 18,
-        color: 'white'
+        color: 'grey'
     },
     iconStyle: {
         fontSize: 35,
         alignSelf: 'center',
         marginHorizontal: 15,
-        color: 'white'
+        color: 'grey'
     }
 
 });
