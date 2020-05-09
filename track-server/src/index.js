@@ -1,23 +1,29 @@
+require('./models/User')
+
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
+require('dotenv').config();
 
-const app = express ();
 
+const app = express();
 
-const mongoURI = "mongodb+srv://BreezyBreon:tacobell5@cluster0-ym5rv.gcp.mongodb.net/test?retryWrites=true&w=majority"
+app.use(bodyParser.json());
+app.use(authRoutes);
 
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
 });
 
 mongoose.connection.on('connected', () => {
-    console.log('Connected to mongo instance successfully');
+    console.log("Connected to MongoDB instance succesfully");
 });
 
-mongoose.connection.on('error', (err) =>{
-    console.error('Error connecting to mongo', err);
+mongoose.connection.on('error', err => {
+    console.error("Error in connecting to MongoDB", err);
 });
 
 
@@ -26,7 +32,6 @@ app.get('/', (req, res) => {
     res.send('Hi there!')
 });
 
-
 app.listen(3000, () => {
-    console.log('Listening on port 3000');
+    console.log('Server succesffully started on port 3000');
 });
